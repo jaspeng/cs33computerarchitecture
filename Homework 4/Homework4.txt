@@ -1,0 +1,71 @@
+Jasmine Peng
+004 939 829           
+
+Homework 4
+
+6.29, 8.15, 9.15
+
+
+6.29)
+Memory is byte addressable
+Memory accesses are to 1 byte words (not to 4 byte words)
+Addresses are 12 bits wide
+The cache is two way set associative (E = 2) with a 4 byte block size (B = 4) and four sets (S = 4)
+
+
+Contents of the cache are as follows (hexadecimal notation): 
+  
+
+
+A) Indicate the following CO (cache block offset), CI (cache set index), CT (cache tag) 
+
+Block offset (# of bits) = log2(B) = log2(4) = 2
+Set index (# of bits) = log2(S) = log2(4) = 2
+Tag (# of bits) = m - ( s + b) = 13 - (2 + 2) = 9
+
+CT CT CT CT CT CT CT CT CT CI CI CO CO
+12 11 10 9  8  7  6  5  4  3  2  1  0
+	                                
+B) Indicate if it will be a cache hit or miss when carries out in sequence as listed. Also give value of a read if it can be inferred from the information in the cache. 
+
+Operation  Address  Hit?  Read value (or unknown) 
+Read       0x834    No    Unknown
+Write      0x836    Yes   Unknown
+Read       0xFFD    Yes   0xC0 
+	                        
+For address 0x834, the index is 01 (1 in decimal). We have a miss because tag 0x83 does not exist in set 1 with a valid bit set. The second block at index 1 will be updated with valid bit being set and tag being set to 0x83.                 
+For address 0x836, the index is again 01 (1 in decimal). It is a hit because the valid bit was set in the previous operation for the second block at index 1. No value could be read (this is also a write operation). 
+For address 0xFFD, the index is 11 (3 in decimal). In this operation, we have a hit because at set index 3, we have tag 0xFF and a valid bit set. The value read would be for byte 01 (binary). The read value is 0xC0.
+
+
+8.15)
+How many “hello” lines does this program print?
+
+#include “csapp.h” 
+void doit()
+{
+if (Fork() == 0) {
+Fork(); 
+printf(“hello\n”); 
+return;
+}
+return; 
+}
+int main()
+{
+doit();
+printf(“hello\n”)l
+exit(0);
+}
+
+We would print out 5 lines of “hello”. 
+
+
+9.15)
+Determine the block sizes and header values that would result from the following sequence of malloc requests. Assumptions (1) The allocator maintains double word alignment and uses an implicit free list with the block format from Figure 9.35. (2) Block sizes are rounded up to the nearest multiple of 8 bytes. 
+
+Request      Block size (decimal bytes)   Block header (hex) 
+malloc(3)    8                            0x9
+malloc(11)   16                           0x11
+malloc(20)   24                           0x19
+malloc(21)   32                           0x21
