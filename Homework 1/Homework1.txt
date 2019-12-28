@@ -1,0 +1,39 @@
+Jasmine Peng
+UID: 004 939 829
+
+
+Homework 1 
+
+2.72
+1.  The conditional test in the code always succeeds because the expression maxbytes - sizeof(val) found in the if statement returns an unsigned integer datatype in every case. This is because the size of operator returns a value of type size_t, which is an unsigned integer datatype. When the expression is evaluated, the unsigned data type takes presence over int. 
+2.  if (maxbytes - (int) sizeof(val) >= 0) 
+
+2.78
+/* Divide by power of 2. Assume 0 <= k < w-1 */
+int divide_power2(int x, int k)
+{
+        int neg = x & INT_MIN; //flag to check if the number is negative 
+        (neg && (x = x+(1<<k) - 1)); //left arithmetic shift = left logical shift
+        return x>>k; //divide by power of 2
+}
+
+2.82
+1. (x<y) == (-x>-y)
+Yields 0 (FALSE), when x==INT_MIN, y==INT_MIN+1 because INT_MIN = -INT_MIN (by definition INT_MIN is the smallest negative number, so including a negative sign does not actually result in a different value) 
+2. ((x+y) << 4) + y-x == 17*y + 15*x
+((x+y) << 4 + y-x
+((x+y) * 16) + y-x
+17*y + 15*x
+Yields 1 (TRUE) 
+     C) ~x + ~y + 1 == ~(x+y)
+        ~x + 1 == -x    //given property. observe that x + ~x gives us 1’s in every bit position (-1)
+        ~(x+y) + 1 == -(x+y)
+        ~(x+y) + 1 == ~x+1 + ~y+1
+        ~(x+y) == ~x + ~y + 1
+        Yields 1 (TRUE) 
+    D) ((unsigned) x - (unsigned) y) == -(unsigned)(y-x) 
+    Yields 1 (TRUE) because whether it is signed or not should not affect the actual arithmetic processes  
+    E) ((x>>2) << 2) <= x
+         x == (x>>2) << 2 + two bits of x 
+        (x>>2) << 2 +  two bits >= (x>>2) << 2
+        Yields 1 (TRUE)
