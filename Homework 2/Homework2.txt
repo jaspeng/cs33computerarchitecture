@@ -1,0 +1,51 @@
+Jasmine Peng
+004 939 829
+
+3.60 
+* Registers that hold x, n result, and mask
+   * x        %rdi
+   * n        %esi
+   * result        %rax
+   * mask        %rdx
+* result = 0 and mask = 1
+* mask != 0
+* mask = mask << n
+* code below
+long loop (long x, long n)
+{
+        long result = 0;
+        long mask; 
+        for (mask = 1; mask != 0; mask = mask << (n & 0xFF))
+                result |= (x & mask);
+        return result; 
+}
+
+
+3.63
+long switch_prob (long x, long n)
+{
+        long result = x; 
+        switch(n)
+{
+        case 60: 
+        case 62: 
+                result = x * 8; 
+                break; 
+        case 63:
+                result = x >> 3;
+                break;
+        case 64: 
+                x = x << 4-x;
+        case 65:
+                x = x * x; 
+        default:
+                result = x + 0x48; 
+}
+        return result; 
+}
+
+
+3.65
+* %rdx
+* %rax
+* M = 15;
