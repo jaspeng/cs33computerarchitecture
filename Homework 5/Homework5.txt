@@ -1,0 +1,49 @@
+Jasmine Peng
+UID: 004 939 829
+Textbook Problems: 9.11, 12.17, 12.29
+
+9.11) Virtual address: 0x027c 
+
+A)Virtual address format 
+
+13   12   11   10   9    8    7    6    5   4   3   2   1   0
+TLBT TLBT TLBT TLBT TLBT TLBT TLBI TLBI VPO VPO VPO VPO VPO VPO
+	
+B) Address translation
+
+Parameter         Value
+VPN               0x09
+TLB index         0x01
+TLB tag           0x02
+TLB hit? (Y/N)    N
+Page fault? (Y/N) N
+PPN               17
+
+C) Physical address format 
+
+11 10 9 8 7 6 5 4 3 2 1 0
+0  1  0 1 1 1 1 1 1 1 0 0
+	
+
+D) Physical memory reference 
+
+Parameter             Value
+Byte offset           0x00
+Cache index           0x0f
+Cache tag             0x17
+Cache hit? (Y/N)      N
+Cache byte returned   _
+	
+
+12.17) 
+1. pthread_join() function isn’t used, so the void* thread(void *vargp) function isn’t executed. For this reason, nothing will print. Only the main() function is executed. 
+2. You can replace exit(0) with pthread_join to explicitly gather the peer thread. 
+
+
+12.29) No, the program can’t deadlock. A deadlock is when two processes are waiting on the same event to happen. 
+So, here a deadlock occurs when the threads have the same mutex pairs. The first thread has two mutex threads (a, b) and (a, c) 
+but the other mutex pair (b, c) is absent. Another thread has mutex pair (c, b)l; however, mutex pairs (a, b) and (a, c) are absent. 
+Therefore, we have disjoint sets, which results in no deadlock.
+
+
+
