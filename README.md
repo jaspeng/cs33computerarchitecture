@@ -1,2 +1,2 @@
-# cs33computerorganization
-submitted homework and projects from CS 33
+# cs33
+intro to computer organization
